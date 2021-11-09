@@ -129,26 +129,26 @@ export const data = [
 
 
 
-const json = {
-	qualification: 1,
-	cod: 1,
-	integrity: 1,
-	initiative: 1,
-	intellectual_ability: 1,
-	relation_with_staff_public: 1,
-	supervisory_ability: 1, 
-	atdp: 1,
-	atwu: 1, 
-	tihj: 1,
-	cwoaw: 1, 
-	cap: 1,
-	pojacs: 1,
-	attohr: 1,
-	atpup: 1, 
-	praraeuos: 1,
-	ecs: 1,
-	atde: 1,
-	bbsad: 1,
-	tir: 1, 
-	per: 1
-}
+// const json = {
+// 	qualification: 1,
+// 	cod: 1,
+// 	integrity: 1,
+// 	initiative: 1,
+// 	intellectual_ability: 1,
+// 	relation_with_staff_public: 1,
+// 	supervisory_ability: 1, 
+// 	atdp: 1,
+// 	atwu: 1, 
+// 	tihj: 1,
+// 	cwoaw: 1, 
+// 	cap: 1,
+// 	pojacs: 1,
+// 	attohr: 1,
+// 	atpup: 1, 
+// 	praraeuos: 1,
+// 	ecs: 1,
+// 	atde: 1,
+// 	bbsad: 1,
+// 	tir: 1, 
+// 	per: 1
+// }

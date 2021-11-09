@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from "./Nav";
 import './Dashboard.css';
-import { data} from './data';
+// import { data} from './data';
 
 class Dashboard extends React.Component {
 	constructor() {
