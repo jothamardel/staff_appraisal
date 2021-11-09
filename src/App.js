@@ -1,5 +1,5 @@
 import './App.css';
-import { Router, Route, Routes } from 'react-router-dom'
+import {  Route, Routes } from 'react-router-dom'
 import CustomTable from './CustomTable';
 import Dashboard from './Dashboard';
 import Hero from './Hero';
