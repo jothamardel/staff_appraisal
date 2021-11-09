@@ -1,9 +1,9 @@
 
 
-let API_URL = 'http://localhost:8000';
-if (process.allowedNodeEnvironmentFlags.env === 'production') {
-	API_URL = 'https://guarded-wildwood-57519.herokuapp.com/';
-}
+let API_URL = 'https://guarded-wildwood-57519.herokuapp.com/';
+// if (process.allowedNodeEnvironmentFlags.env === 'production') {
+// 	API_URL = 'https://guarded-wildwood-57519.herokuapp.com/';
+// }
 
 
 export async function httpGetAllTeachers() {
