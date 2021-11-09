@@ -5,9 +5,15 @@ import Dashboard from './Dashboard';
 import Hero from './Hero';
 import RecordPerformance from './Record-Performance';
 import CardList from './CardList';
+import { useEffect } from 'react';
+import { httpGetAllAnalysis, httpGetAllTeachers } from './hooks/request';
 
 
 function App() {
+  useEffect(() => {
+    await httpGetAllTeachers();
+    await httpGetAllAnalysis();
+  }, [])
   return (
     <div className="App">
       <Routes>
