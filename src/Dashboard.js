@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from "./Nav";
 import './Dashboard.css';
+import {httpCreateTeachers} from './hooks/request';
 // import { data} from './data';
 
 class Dashboard extends React.Component {
@@ -11,7 +12,8 @@ class Dashboard extends React.Component {
 			email: '',
 			phone: '',
 			age: '',
-			married: false
+			married: false,
+			gender: ''
 		}
 	}
 
@@ -20,9 +22,15 @@ class Dashboard extends React.Component {
 		this.setState({[name]: value});
 	}
 
-	onFormSubmit = e => {
+	onFormSubmit = async (e) => {
 		e.preventDefault();
 		console.log(this.state);
+		const newTeacher = {
+			...this.state,
+			is_married: !this.state.married ? false : true
+		}
+		console.log(newTeacher);
+		await httpCreateTeachers(newTeacher);
 	}
 
 	render() {
