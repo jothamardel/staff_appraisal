@@ -22,10 +22,46 @@ export async function httpGetAllTeachers() {
 		return []
 	}
 }
+export async function httpGetAllAnalysis() {
+	try {
+		const response = await fetch(`${API_URL}/analysis`, {
+			headers: {
+				"Content-Type": "application/json"
+			}
+		});
+		const data = await response.json();
+		console.log(data);
+		return data;
+		
+	} catch (error) {
+		console.log(error);
+		return []
+	}
+}
 
 export async function httpCreateTeachers(data) {
 	try {
 		const response = await fetch(`${API_URL}/teacher`, {
+			method: 'post',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(data)
+		});
+		const res = await response.json();
+		console.log(res);
+		return res;
+		
+	} catch (error) {
+		console.log(error);
+		return []
+	}
+}
+
+
+export async function httpCreateAnalysis(data) {
+	try {
+		const response = await fetch(`${API_URL}/analysis`, {
 			method: 'post',
 			headers: {
 				"Content-Type": "application/json"

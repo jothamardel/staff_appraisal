@@ -1,9 +1,19 @@
+import {useState, useEffect} from 'react';
 import './CustomTable.css';
 import { data } from './data';
+import { httpGetAllAnalysis } from './hooks/request';
 import Nav from './Nav';
 
 
 function CustomTable(props) {
+  const [analysis, setAnalysis] = useState([]);
+	const getAnalysis = async () => {
+		setAnalysis(await httpGetAllAnalysis());
+
+	}
+	useEffect(() => {
+		getAnalysis();
+	}, []);
 	return (
     <>
       <Nav />
@@ -26,80 +36,43 @@ function CustomTable(props) {
                         <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy" key={item.id.toString()}>{item.title}</th>
                       ))
                     }
-                    {/* <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Class of Degree</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Integrity</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Initiative</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Intellectual Ability</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Relation with Staff/Public</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Supervisory Ability</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Ability to Tackle Difficult Problems</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Ability to Work Unsupervised</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Thoroughness in Handling Jobs</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Cooperation with others at work</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Creative Ability/Productivity</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Power of Judgement and Common Sense</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Ability to take on higher Responsiblity</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Ability to Perform under Pressure</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Problems Recognitions and Resolution and Effective Utilization of Subordinate</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Effective Communication Skills (Especially Minutes or Meetings Budgetry Defenses, Processing of Vouchers and Carrying Out Maintenance Work Efficiently)</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Ability to Delegate Effectively and Ability to Offer Constructive Suggestions to Clients and Associates</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Broad Business Sense and Demostration of Leadership Skills</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Time in Rank 2.5 Marks per Year for Over and Above 3 years Time Rank (5 points)</th>
-                    <th className="fw6 tl pa3 white b--solid bw1 w3 bg-navy">Promotion Examination Result</th> */}
                   </tr>
                 </thead>
                 <tbody className="lh-copy">
-                  <tr>
-                    <td className="pv4 pr4 bb b--black-20">Hassan Johnson</td>
-                    <td className="pv3 pr3 bb b--black-20">hassan@companywithalongdomain.co</td>
-                    <td className="pv3 pr3 bb b--black-20">0794433322</td>
-                    <td className="pv3 pr3 bb b--black-20">30</td>
-                    <td className="pv3 pr3 bb b--black-20">Degree</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                    <td className="pv3 pr3 bb b--black-20">1</td>
-                  </tr>
-                  <tr>
-                    <td className="pv3 pr3 bb b--black-20">Taral Hicks</td>
-                    <td className="pv3 pr3 bb b--black-20">@hicks</td>
-                    <td className="pv3 pr3 bb b--black-20">taral@companywithalongdomain.co</td>
-                    <td className="pv3 pr3 bb b--black-20">72326219423551</td>
-                  </tr>
-                  <tr>
-                    <td className="pv3 pr3 bb b--black-20">Tyrin Turner</td>
-                    <td className="pv3 pr3 bb b--black-20">@tt</td>
-                    <td className="pv3 pr3 bb b--black-20">ty@companywithalongdomain.co</td>
-                    <td className="pv3 pr3 bb b--black-20">92325170324444</td>
-                  </tr>
-                  <tr>
-                    <td className="pv3 pr3 bb b--black-20">Oliver Grant</td>
-                    <td className="pv3 pr3 bb b--black-20">@oli</td>
-                    <td className="pv3 pr3 bb b--black-20">oliverg@companywithalongdomain.co</td>
-                    <td className="pv3 pr3 bb b--black-20">71165170352909</td>
-                  </tr>
-                  <tr>
-                    <td className="pv3 pr3 bb b--black-20">Dean Blanc</td>
-                    <td className="pv3 pr3 bb b--black-20">@deanblanc</td>
-                    <td className="pv3 pr3 bb b--black-20">dean@companywithalongdomain.co</td>
-                    <td className="pv3 pr3 bb b--black-20">71865178111909</td>
-                  </tr>
+                  {
+                      analysis.length > 0 && analysis.map(item => (
+
+                      <tr key={item.fullName}>
+                        <td className="pv4 pr4 bb b--black-20">{item.fullName}</td>
+                        <td className="pv3 pr3 bb b--black-20">john@email.com</td>
+                        <td className="pv3 pr3 bb b--black-20">0794433322</td>
+                        <td className="pv3 pr3 bb b--black-20">30</td>
+                        <td className="pv3 pr3 bb b--black-20">Degree</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.qualification}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.cod}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.integrity}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.initiative}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.intellectual_ability}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.relation_with_staff_public}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.supervisory_ability}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.atdp}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.atwu}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.tihj}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.cwoaw}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.cap}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.pojacs}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.attohr}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.atpup}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.praraeuos}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.ecs}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.atde}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.bbsad}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.tir}</td>
+                        <td className="pv3 pr3 bb b--black-20">{item.per}</td>
+                      </tr>
+                      ))
+                  }
+                  
                 </tbody>
               </table>
             </div>

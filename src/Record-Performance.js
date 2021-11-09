@@ -2,12 +2,13 @@ import React from 'react';
 import Nav from "./Nav";
 import './Dashboard.css';
 import { data} from './data';
+import { httpCreateAnalysis, httpGetAllTeachers } from './hooks/request';
 
 class RecordPerformance extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			staff: "",
+			fullName: "",
 			qualification: 0,
 			cod: 0,
 			integrity: 0,
@@ -28,8 +29,17 @@ class RecordPerformance extends React.Component {
 			atde: 0,
 			bbsad: 0,
 			tir: 0, 
-			per: 0
+			per: 0,
+			staff: []
 		}
+	}
+
+	componentDidMount() {
+		httpGetAllTeachers()
+		.then(data => {
+			this.setState({ staff: data });
+		})
+		.catch(console.log)
 	}
 
 	onInputChange = e => {
@@ -40,6 +50,7 @@ class RecordPerformance extends React.Component {
 	onFormSubmit = e => {
 		e.preventDefault();
 		console.log(this.state);
+		httpCreateAnalysis({...this.state})
 	}
 
 	render() {
@@ -53,11 +64,14 @@ class RecordPerformance extends React.Component {
 							<legend className="f4 fw6 ph0 mh0">Analysis</legend>
 								<div className="mt3 input">
 									<label className="db fw6 lh-copy f6" htmlFor="staff">Staff</label>
-									<select onChange={this.onInputChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"  name="staff"  id="staff">
+									<select onChange={this.onInputChange} className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"  name="fullName"  id="staff">
 										<option>select staff</option>
-										<option value={0}>0</option>
-										<option value={1}>1</option>
-										<option value={2}>2</option>
+										{
+											this.state.staff.map(item => (
+												<option key={item.fullName}>{item.fullName}</option>
+											))
+
+										}
 									</select>
 								</div>	
 								{
